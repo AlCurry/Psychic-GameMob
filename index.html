@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- 
+Assignment 3 - psychic game with js and a bit of bootstrap styling
+
+:
+Al Curry  February 8, 2018
+ 
+
+GWU full stack development program  -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>psychic game</title>
+    <!-- Bootstrap  4.0 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+<html lang="en-us">
+
+<div class="container text-white fill">
+<div id="game" onkeypress>
+  <h1 id="h1">psychic game</h1>
+  Guess what letter I'm thinking of
+  <br />
+  <br />
+  <div id="score">
+    Wins:
+    <span id="wins"></span>
+    <br />
+    <br /> Losses:
+    <span id="losses"></span>
+    <br />
+    <span id="winnerText"></span>
+    <br /> Guesses Left:
+    <span id="left">9</span>
+    <br />
+    <br /> Your guesses so far:
+    <span id="guessList"></span>
+
+    <h2 id="overText"></h2>
+  
+</div>
+</div>
+<script src="./assets/javascript/game.js"></script>
+</body>
+</html>
