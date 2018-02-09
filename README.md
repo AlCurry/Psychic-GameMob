@@ -3,3 +3,5 @@
 ### Assignment 3, GWU full stack program, used html, js, bootstrap & css.
 
 Modified Psychic-Game to accept input with an input text, rather than with keypress event, to support mobile touch screen devices.
+
+Imperfect, at this writing, but more usable than the original Psychic-Game on a phone.
