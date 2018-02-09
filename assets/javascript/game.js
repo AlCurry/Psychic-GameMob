@@ -25,73 +25,83 @@ pseudo code for this module
 
   */
 
-  var alphaIdx = 0;
+//document.getElementById("keyEntered").addEventListener("keypress", game);
+
+var gCnt = 9;
+var alphaIdx = 0;
+var gameCount = 0;
+var endText = "";
+var reset = false;
+var guessList = [];
+
+// do game set up -- get random value, other initialization / reset
+if (gCnt === 9) {
+  alphaIdx = getAlphaIdx();
+}
+
+function getAlphaIdx() {
+  return Math.floor(Math.random() * 25);
+}
+
+function gameOver() {
+  gameCount++;
+  reset = true;
+  document.getElementById("overText").innerHTML = endText;
+}
+
+function game() {
+
+  console.log("Begin GAME ");
   var wins = 0;
   var losses = 0;
   var alphaStr = "abcdefghijklmnopqrstuvwxyz";
-  var gCnt = 9;
-  var guessList = [];
-  var endText = "";
-  var gameCount = 0;
-  var reset = false;
 
-  function getAlphaIdx() {
-        return Math.floor(Math.random() * 25);
-  }
-  function gameOver() {
-        gameCount++;
-        reset = true;
-        document.getElementById("overText").innerHTML = endText;
-  }
-
-  /* random number  0 - 25 */
-  alphaIdx = getAlphaIdx();
   console.log("P random index : " + alphaIdx + " alpha char: " + alphaStr[alphaIdx]);
 
-  document.addEventListener('keypress', (event) => {
-    const keyName = event.key;
+  const keyName = event.key;
   
-    console.log('keypress event\n\n' + 'key: ' + keyName);
+  console.log('keypress event\n\n' + 'key: ' + keyName);
 
-    /* Reset, after first game */
-    /*  occurs on first key press after win or loss */
-    if (gameCount > 0 && reset === true) {
-       gCnt = 9
-       guessList = [];
-       document.getElementById("left").innerHTML = gCnt;
-       document.getElementById("guessList").innerHTML = guessList;
-       document.getElementById("overText").innerHTML = "";
-       alphaIdx = getAlphaIdx();
-       console.log("New game RND idx : " + alphaIdx + " alpha char: " + alphaStr[alphaIdx]);
-       reset = false;
-    }
-    document.getElementById("left").innerHTML = --gCnt;
+  /* Reset, after first game */
+  /*  occurs on first key press after win or loss */
+  if (gameCount > 0 && reset === true) {
+    gCnt = 9
+    guessList = [];
+    document.getElementById("left").innerHTML = gCnt;
+    document.getElementById("guessList").innerHTML = guessList;
+    document.getElementById("overText").innerHTML = "";
+    alphaIdx = getAlphaIdx();
+    console.log("New game RND idx : " + alphaIdx + " alpha char: " + alphaStr[alphaIdx]);
+    reset = false;
+  }
+  document.getElementById("left").innerHTML = --gCnt;
  
-      var guess = event.key.toLowerCase();
-      console.log("guess = " + guess);
+  var guess = event.key.toLowerCase();
+  console.log("guess = " + guess);
 
-      if (guess === alphaStr[alphaIdx]) {
+  if (guess === alphaStr[alphaIdx]) {
 
-        document.getElementById("wins").innerHTML = ++wins;
-        gCnt = 0;
-        document.getElementById("left").innerHTML = gCnt;
-        endText = guess + " wins"
-        gameOver();
+    document.getElementById("wins").innerHTML = ++wins;
+    gCnt = 0;
+    document.getElementById("left").innerHTML = gCnt;
+    endText = guess + " wins"
+    gameOver();
 
-      } else {
-         if (gCnt === 0) {
+  } else {
+    if (gCnt === 0) {
 
-          document.getElementById("losses").innerHTML = ++losses;
-          endText = "no more guesses - winner was " + alphaArray[alphaIdx];
-          gameOver();
-         }
-      }
+      document.getElementById("losses").innerHTML = ++losses;
+      endText = "no more guesses - winner was " + alphaStr[alphaIdx];
+      gameOver();
+    }
+  }
+  document.getElementById("keyEntered").value = "";
+  console.log("YO");
+  guessList.push(guess);
 
-      guessList.push(guess);
+  document.getElementById("guessList").innerHTML = guessList;
 
-      document.getElementById("guessList").innerHTML = guessList;
+  console.log(" wins: " + wins + " losses: " + losses);
 
-      console.log(" wins: " + wins + " losses: " + losses);
-
-  });
+}
 
