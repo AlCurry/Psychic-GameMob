@@ -56,7 +56,8 @@ function gameOver() {
 }
 
 function isMobileDevice() {
-  return (typeof window.screen.orientation.type !== "primary-landscape") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+     return (window.screen.orientation.type !== "landscape-primary")
+       || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };
 
 function game() {
@@ -70,7 +71,9 @@ function game() {
 
   const keyName = event.key;
   if (keyName.length >= 1 && isMobileDevice()) {
+    console.log("BBBBBLLLLUUUURRRR");
     $('#keyEntered').blur();
+
   }
   
   console.log('keypress event\n\n' + 'key: ' + keyName);
