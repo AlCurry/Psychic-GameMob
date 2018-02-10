@@ -72,6 +72,7 @@ function game() {
   const keyName = event.key;
   if (keyName.length >= 1 && isMobileDevice()) {
     console.log("BBBBBLLLLUUUURRRR");
+    alert("Blur");
     $('#keyEntered').blur();
 
   }
