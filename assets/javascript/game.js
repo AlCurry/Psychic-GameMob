@@ -28,6 +28,7 @@ pseudo code for this module
         rearrange code with (yeah, with some globals) 
         add isMobileDevice check, should dismiss keyboard between entries on a mobile device,
           since the keyboard covers nearly half the screen 
+        modify isMobileDevice check, likely still imperfect, but the initial version seems obsolete
   */
 
 //document.getElementById("keyEntered").addEventListener("keypress", game);
@@ -55,7 +56,7 @@ function gameOver() {
 }
 
 function isMobileDevice() {
-  return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+  return (typeof window.screen.orientation.type !== "primary-landscape") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };
 
 function game() {
