@@ -70,12 +70,12 @@ function game() {
   console.log("P random index : " + alphaIdx + " alpha char: " + alphaStr[alphaIdx]);
 
   const keyName = event.key;
-  if (keyName.length >= 1 && isMobileDevice()) {
+/*   if (keyName.length >= 1 && isMobileDevice()) {
     console.log("BBBBBLLLLUUUURRRR");
     alert("Blur");
     $('#keyEntered').blur();
 
-  }
+  } */
   
   console.log('keypress event\n\n' + 'key: ' + keyName);
 
