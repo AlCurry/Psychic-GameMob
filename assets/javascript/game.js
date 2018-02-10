@@ -23,6 +23,11 @@ pseudo code for this module
 
      AFTER 9 TRIES, IF NOT WIN, LOSE, RESET
 
+     Change history
+     February 9/10 
+        rearrange code with (yeah, with some globals) 
+        add isMobileDevice check, should dismiss keyboard between entries on a mobile device,
+          since the keyboard covers nearly half the screen 
   */
 
 //document.getElementById("keyEntered").addEventListener("keypress", game);
@@ -49,6 +54,10 @@ function gameOver() {
   document.getElementById("overText").innerHTML = endText;
 }
 
+function isMobileDevice() {
+  return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
+
 function game() {
 
   console.log("Begin GAME ");
@@ -59,6 +68,9 @@ function game() {
   console.log("P random index : " + alphaIdx + " alpha char: " + alphaStr[alphaIdx]);
 
   const keyName = event.key;
+  if (keyName.length >= 1 && isMobileDevice()) {
+    $('#keyEntered').blur();
+  }
   
   console.log('keypress event\n\n' + 'key: ' + keyName);
 
