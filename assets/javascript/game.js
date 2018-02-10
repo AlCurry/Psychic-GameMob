@@ -1,16 +1,10 @@
 /*
-
 Assignment 3 - html and javascript simple psychic game - guess a letter 
                a bit of bootstrap style added
-
 Al Curry  February 8, 2018
-
 GWU full stack development program  
-
 this module invoked by index.html 
-
 pseudo code for this module 
-
     GET A RANDOM LETTER
     GET A GUESS 
     DECREMENT LEFT
@@ -20,15 +14,7 @@ pseudo code for this module
         RESET
      ELSE 
         ADD LETTER TO GUESS LIST
-
      AFTER 9 TRIES, IF NOT WIN, LOSE, RESET
-
-     Change history
-     February 9/10 
-        rearrange code with (yeah, with some globals) 
-        add isMobileDevice check, should dismiss keyboard between entries on a mobile device,
-          since the keyboard covers nearly half the screen 
-        modify isMobileDevice check, likely still imperfect, but the initial version seems obsolete
   */
 
 //document.getElementById("keyEntered").addEventListener("keypress", game);
@@ -55,11 +41,6 @@ function gameOver() {
   document.getElementById("overText").innerHTML = endText;
 }
 
-function isMobileDevice() {
-     return (window.screen.orientation.type !== "landscape-primary")
-       || (navigator.userAgent.indexOf('IEMobile') !== -1);
-};
-
 function game() {
 
   console.log("Begin GAME ");
@@ -70,12 +51,6 @@ function game() {
   console.log("P random index : " + alphaIdx + " alpha char: " + alphaStr[alphaIdx]);
 
   const keyName = event.key;
-/*   if (keyName.length >= 1 && isMobileDevice()) {
-    console.log("BBBBBLLLLUUUURRRR");
-    alert("Blur");
-    $('#keyEntered').blur();
-
-  } */
   
   console.log('keypress event\n\n' + 'key: ' + keyName);
 
@@ -121,4 +96,5 @@ function game() {
   console.log(" wins: " + wins + " losses: " + losses);
 
 }
+
 
